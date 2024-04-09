@@ -7,6 +7,17 @@
     <title>Books</title>
 </head>
 <body>
-    <h1>BOOKS</h1>
+    <x-app-layout>
+   
+
+    <x-guest-layout>
+        <h1>BOOKS</h1>
+        <h1>BOOKS</h1>
+        <h1>BOOKS</h1>
+        <h1>BOOKS</h1>
+    </x-guest-layout>
+
+</x-app-layout>
+
 </body>
 </html>
