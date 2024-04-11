@@ -1,8 +1,4 @@
 <x-sidebar-layout>
-<x-slot name="header">
-    <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        Dashasfadsfgadegasgadegageeagagagwergqeggeggeaeggaegeg
-    </h2>
-</x-slot>
+<h2>testetestetestetesteteste</h2>
 
 </x-sidebar-layout>

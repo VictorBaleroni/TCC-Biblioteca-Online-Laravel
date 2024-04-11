@@ -2,14 +2,14 @@
 
 namespace App\View\Components;
 
-use Closure;
+
 use Illuminate\View\Component;
-use Illuminate\Contracts\View\View;
+use Illuminate\View\View;
 
 class SidebarLayout extends Component
 {
    
-    public function render(): View|Closure|string
+    public function render(): View
     {
         return view('layouts.sidebar');
     }
