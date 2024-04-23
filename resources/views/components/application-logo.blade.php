@@ -1,2 +1,2 @@
 
-<img src="{{ asset('build/logo/biblioteca-online.png') }}" alt=""{{ $attributes }}>
+<img src="{{ asset('build/logo/icon_biblioteca.ico') }}" alt=""{{ $attributes }}>
