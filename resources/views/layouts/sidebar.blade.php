@@ -50,13 +50,13 @@
                     <ul class="mt-6 space-y-2 tracking-wide">
                       <li class="min-w-max">
                         <a href="{{ route('dashboard') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                          <img class="-ml-2 h-8 w-8" src="{{ asset('logo/icon_livros.ico') }}" alt="">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_livros.ico') }}" alt="">
                           <span class="ms-3 py-1">Livros</span>
                         </a>
 
                       <li class="min-w-max">
                         <a href="{{ route('profile.edit') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                          <img class="-ml-2 h-8 w-8" src="{{ asset('logo/icon_editar.ico') }}" alt="">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_editar.ico') }}" alt="">
                           <span class="ms-3 py-1">Editar conta</span>
                         </a>
                       </li>
@@ -70,7 +70,7 @@
                           <a class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group" href="route('logout')"
                                   onclick="event.preventDefault();
                                               this.closest('form').submit();">
-                              <img class="-ml-2 h-8 w-8" src="{{ asset('logo/icon_sair.ico') }}" alt="">
+                              <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_sair.ico') }}" alt="">
                               <span class="ms-3 py-1">Sair</span>
                         </a>
                       </form>
