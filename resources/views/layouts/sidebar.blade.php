@@ -81,7 +81,6 @@
             </aside>
           
             
-            
       {{ $slot }}
         
     </body>
