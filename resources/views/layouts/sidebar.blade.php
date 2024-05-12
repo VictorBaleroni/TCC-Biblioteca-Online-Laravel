@@ -53,11 +53,19 @@
                           <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_livros.ico') }}" alt="">
                           <span class="ms-3 py-1">Livros</span>
                         </a>
+                      </li>
 
                       <li class="min-w-max">
                         <a href="{{ route('profile.edit') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                           <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_editar.ico') }}" alt="">
                           <span class="ms-3 py-1">Editar conta</span>
+                        </a>
+                      </li>
+
+                      <li class="min-w-max">
+                        <a href="" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_favorito.ico') }}" alt="">
+                          <span class="ms-3 py-1">Favoritos</span>
                         </a>
                       </li>
                     </ul>
@@ -81,6 +89,7 @@
             </aside>
           
             
+
       {{ $slot }}
         
     </body>
