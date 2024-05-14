@@ -18,21 +18,16 @@
     <body class="font-sans antialiased dark:bg-gray-300">
         
         <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <div class="px-3 py-3 lg:px-5 lg:pl-3">
+            <div class=" py-3">
               <div class="flex items-center justify-between">
-                <div class="flex items-center justify-start rtl:justify-end">
-                  <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
-                      <span class="sr-only">Open sidebar</span>
-                      <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
-                      </svg>
-                   </button>
+                <div class="flex items-center">
+
                   <a href="{{ route('dashboard') }}" class="flex ms-2 md:me-24">
                     <x-application-logo class="me-3 block h-10 w-auto fill-current text-gray-600" />
                     <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">Biblioteca</span>
                   </a>
                 </div>
-                <div class="flex items-center">
+                <div class="flex px-4 items-center">
                     <div class="flex dark:text-white items-center ms-3">
                         <div>{{ Auth::user()->name }}</div>
                     </div>
@@ -41,8 +36,8 @@
             </div>
           </nav>
           
-            <aside class=" w-[3.34rem]  border-r hover:w-56 fixed top-0 left-0 pt-10 transition-transform overflow-y-auto -translate-x-full 
-          bg-white  border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700">
+            <aside  class=" w-[3.34rem] border-r hover:w-56 fixed top-0 left-0 pt-10 overflow-y-auto sm:translate-x-0 -translate-x-full 
+          bg-white  border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             
                 <div class="flex h-screen flex-col justify-between pt-2 pb-11 px-1 bg-gray-50 dark:bg-gray-800">
                   <div>
@@ -54,6 +49,13 @@
                           <span class="ms-3 py-1">Livros</span>
                         </a>
                       </li>
+                      
+                      <li class="min-w-max">
+                        <a href="" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_favorito.ico') }}" alt="">
+                          <span class="ms-3 py-1">Favoritos</span>
+                        </a>
+                      </li>
 
                       <li class="min-w-max">
                         <a href="{{ route('profile.edit') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
@@ -62,12 +64,7 @@
                         </a>
                       </li>
 
-                      <li class="min-w-max">
-                        <a href="" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_favorito.ico') }}" alt="">
-                          <span class="ms-3 py-1">Favoritos</span>
-                        </a>
-                      </li>
+                      
                     </ul>
                   </div>
 
