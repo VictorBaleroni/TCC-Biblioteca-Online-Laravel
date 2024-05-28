@@ -44,4 +44,13 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function isADM(): bool{
+        if($this->typeUser == 'admin'){
+            return true;
+        }else{
+            return false;
+        }
+        
+    }
 }

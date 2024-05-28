@@ -1,5 +1,8 @@
 <x-sidebar-layout>
     <div class="sm:ml-36 mt-14 px-3 py-12">
+        @can('is_ADM')
+            
+        
 <h1>tetetsetestsetesesttet</h1>
 
 <div class="py-12">
@@ -56,5 +59,11 @@
         </div>
     </div>
 </div>
+
+    @else
+    <h2>não é ADM!!!</h2>
+
+@endcan
+
 </div>
 </x-sidebar-layout>
