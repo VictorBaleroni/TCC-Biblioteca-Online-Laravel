@@ -59,12 +59,19 @@
 
                       <li class="min-w-max">
                         <a href="{{ route('profile.edit') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
-                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_editar.ico') }}" alt="">
-                          <span class="ms-3 py-1">Editar conta</span>
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_user_profile.ico') }}" alt="">
+                          <span class="ms-3 py-1">Editar perfil</span>
                         </a>
                       </li>
 
-                      
+                      @can('is_ADM')
+                      <li class="min-w-max">
+                        <a href="{{ route('users.index') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_editar.ico') }}" alt="">
+                          <span class="ms-3 py-1">Editar usuários</span>
+                        </a>
+                      </li>
+                      @endcan
                     </ul>
                   </div>
 
