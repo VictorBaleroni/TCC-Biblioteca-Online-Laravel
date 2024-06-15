@@ -21,7 +21,8 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth','userMiddleware')->group(function () {
     Route::get('/users',[UserController::class, 'index'])->name('users.index');
-
+    Route::put('/users/{user}',[UserController::class,'update'])->name('users.update');
+    Route::delete('/users/{user}',[UserController::class,'destroy'])->name('users.destroy');
 });
 
 require __DIR__.'/auth.php';
