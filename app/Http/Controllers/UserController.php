@@ -24,6 +24,7 @@ class UserController extends Controller{
         $data = $request->except(['_token','_method']);
             $user->typeUser = $data['typeUser'];
             $user->where('id', $id)->update($data);
+            
                 return redirect()->back();
     }
 

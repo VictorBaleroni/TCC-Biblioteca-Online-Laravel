@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
         
     </head>
-    <body class="font-sans antialiased dark:bg-gray-300">
+    <body class="font-sans antialiased dark:bg-zinc-300">
         
         <nav class="fixed top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class=" py-3">
@@ -71,7 +71,16 @@
                           <span class="ms-3 py-1">Editar usuários</span>
                         </a>
                       </li>
+
+                      <li class="min-w-max">
+                        <a href="{{ route('addBooks.create') }}" class="flex items-center p-3 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                          <img class="-ml-2 h-8 w-8" src="{{ asset('img/icon_livro_aberto.ico') }}" alt="">
+                          <span class="ms-3 py-1">Adicionar Livros</span>
+                        </a>
+                      </li>
+                    </ul>
                       @endcan
+                    
                     </ul>
                   </div>
 

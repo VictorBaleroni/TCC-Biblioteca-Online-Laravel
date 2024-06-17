@@ -14,7 +14,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     </head>
-    <body class="font-sans ">
+    <body class="font-sans dark:bg-zinc-300">
         <nav class="fixed dark:text-white top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="px-4 py-4 lg:px-5 lg:pl-3">
                 
@@ -35,11 +35,28 @@
                     @endif
                     @endauth
                     @endif
-                </div>
-                  
+                </div>  
               </div>
             </div>
           </nav>
-        
+          <div class=" bg-gradient-to-t from-gray-800 to-slate-500 h-96 w-full bg-cover bg-center relative">
+          <img class="w-full h-full object-cover absolute mix-blend-overlay" src="{{ asset('img/initial_old_books.jpg') }}" alt="books">
+          
+
+          <div class="flex pl-[3rem] pt-[5.5rem]">
+            <div class="pr-2">
+                <img class="-ml-2 h-[4rem] w-[4.2rem]" src="{{ asset('img/icon_biblioteca.ico') }}" alt="">
+            </div>
+
+            <h1 class="text-white text-6xl font-bold">Biblioteca Online</h1>
+          </div>
+
+          <div class="pl-[7.2rem]">
+            <h2 class="text-white text-3xl font-light">Livros Digitais</h2>
+          </div>
+          </div>
+        </div>
+          
+
     </body>
 </html>
