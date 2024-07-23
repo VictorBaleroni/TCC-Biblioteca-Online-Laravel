@@ -1,11 +1,6 @@
 <x-sidebar-layout>
     <div class="pl-[15rem] pt-[6rem]">
         
-            
-        
-        
-
-            
                 @foreach ($users as $user)
                 <div class="pt-5 pr-5 pl-15">
                     <div class="sm:p-3  dark:bg-gray-800 shadow sm:rounded-lg">
