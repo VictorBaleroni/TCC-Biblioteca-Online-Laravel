@@ -33,10 +33,5 @@
                     </div>
                 </div>
                 @endforeach
-            
-            
-        
-
-    
-</div>
+    </div>
 </x-sidebar-layout>

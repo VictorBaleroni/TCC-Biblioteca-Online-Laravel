@@ -19,7 +19,6 @@ class DashController extends Controller
     }
 
     public function show(Book $book){
-        
         return view('showBooks.show_book',['book'=>$book]);
     }
     

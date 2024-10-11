@@ -27,7 +27,6 @@ class UserController extends Controller{
             
                 return redirect()->back();
     }
-
     
     public function destroy(string $id){
         $this->user->where('id', $id)->delete();

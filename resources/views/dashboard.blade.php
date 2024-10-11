@@ -18,11 +18,13 @@
                   <p class="text-gray-700 text-base">
                     {{ $book->descricao }}
                   </p>
+
                   <div class="flex justify-between">
+
                     @can('is_ADM')
 
                     <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5  border border-blue-700 rounded" type="submit">Editar</button>
-                    
+
                     <form action="{{ route('dashboard.destroy',['book'=>$book->id]) }}" method="POST">
                       @csrf
                       @method('DELETE')
@@ -30,14 +32,25 @@
                       <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5  border border-red-700 rounded" type="submit">Deletar</button>
                       </div>
                   </form>  
-                    
-                    @endcan  
+                    @endcan
+                     
                   </div>
                 </div>
                </div>
               </div>
 
               @endforeach
+
+              @can('is_ADM')
+                
+              <div class="fixed left-0 top-0 bg-black bg-opacity-20 w-screen h-screen flex justify-center items-center">
+                <div class="bg-white rounded shadow-md p-10 w-[50%] flex">
+                  <div></div>
+                </div>
+              </div>
+
+              @endcan
+
     </div>
         </div>
 </x-sidebar-layout>
