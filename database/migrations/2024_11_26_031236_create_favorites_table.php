@@ -9,20 +9,15 @@ return new class extends Migration
     
     public function up(): void
     {
-        Schema::create('books', function (Blueprint $table) {
+        Schema::create('favorites', function (Blueprint $table) {
             $table->id();
-            $table->string('nome');
-            $table->string('autor');
-            $table->string('descricao');
-            $table->string('capa');
-            $table->string('tipoLivro');
-            $table->string('livro');
             $table->timestamps();
         });
     }
 
+    
     public function down(): void
     {
-        Schema::dropIfExists('books');
+        Schema::dropIfExists('favorites');
     }
 };

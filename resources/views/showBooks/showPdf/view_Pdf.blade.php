@@ -22,7 +22,7 @@
 	</main>
 	<footer class="sticky object-cover inset-y-0 h-[5rem] dark:bg-gray-900">
 		<ul class="flex justify-between items-center h-full">
-			<input type="hidden" value="{{ asset( "livros/$book->livro" ) }}" name="showPdf">
+			<input type="hidden" value="{{ asset( "storage/$book->livro" ) }}" name="showPdf">
 			
 			<div class="flex">
 				<a href="{{ route('dashboard') }}" class="pl-4  pr-[2.5rem]">
@@ -31,8 +31,6 @@
 				<p class="text-lg text-white pl-3">{{ $book->nome }}</p>
 			</div>
 			
-
-
 			<div class="pl-[5rem]">
 				<li class="flex">
 				

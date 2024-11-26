@@ -14,9 +14,8 @@ class UserController extends Controller{
         $this->user = new User();
     }
     
-    public function index(){
-        $user = $this->user->all();
-        return view('users.edit_users',['users'=>$user]);
+    public function index(Request $request){
+        return view('users.edit_users',['users' => User::query()->where('name', 'like', '%' . $request->searchUser . '%')->orwhere('email', 'like', '%' . $request->searchUser . '%')->paginate(30)]);
     }
    
     public function update(Request $request, string $id){

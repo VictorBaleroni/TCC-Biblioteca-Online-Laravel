@@ -15,30 +15,37 @@
 
     </head>
     <body class="font-sans dark:bg-zinc-300">
-        <nav class="fixed dark:text-white top-0 z-50 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
-            <div class="px-4 py-4 lg:px-5 lg:pl-3">
-                
-              <div class="flex items-center justify-between ">
-                <div class="flex items-center">
-
-                    @if (Route::has('login'))
-        
+      <div class="flex justify-start items-start bg-slate-800">
+        <header>     
+            @if (Route::has('login'))
+                <nav class="p-4 flex justify-start items-center">
                     @auth
-                        <a class="px-3" href="{{ url('/dashboard') }}">Dashboard</a>
-                    
+                    <div>
+                        <a href="{{ url('/dashboard') }}"
+                            class="p-4 rounded-md py-2 px-4 text-center text-sm shadow-md text-white bg-slate-700 border-slate-900">
+                            Dashboard
+                        </a>
+                    </div>
                     @else
-                        <a class="px-3" href="{{ route('login') }}">Log-in</a>
-                    
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    
-                    @endif
+                    <div class="w-20">
+                        <a href="{{ route('login') }}"
+                            class="p-4 rounded-md py-2 px-4 text-center text-sm shadow-md text-white bg-slate-700 border-slate-900">
+                            Entrar
+                        </a>
+                    </div>
+                        @if (Route::has('register'))
+                        <div>
+                            <a href="{{ route('register') }}"
+                                class="p-4 rounded-md py-2 px-4 text-center text-sm shadow-md text-white bg-slate-700 border-slate-900 ">
+                                Registrar
+                            </a>
+                        </div>
+                        @endif
                     @endauth
-                    @endif
-                </div>  
-              </div>
-            </div>
-          </nav>
+                </nav>
+            @endif
+        </header>
+    </div>
           <div class=" bg-gradient-to-t from-gray-800 to-slate-500 h-96 w-full bg-cover bg-center relative">
           <img class="w-full h-full object-cover absolute mix-blend-overlay" src="{{ asset('img/initial_old_books.jpg') }}" alt="books">
           
@@ -57,6 +64,36 @@
           </div>
         </div>
           
+        <div class="mx-[4rem]">
+            <div class="flex items-center justify-center min-h-screen container mx-auto">
+                <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
+                    @foreach ($books as $book)
+                    <div class="pt-6">
+                      <div class="relative bg-gray-300 overflow-hidden rounded-md shadow-lg transition-all duration-300 group">
+                          <a href="{{ route('showBooks.show',['book'=>$book->id]) }}">
+                            <img class="w-full h-[30rem]" src="{{ asset( "storage/$book->capa" ) }}" alt="Capas">
+                          </a>
+                          <div class="flex items-center justify-center py-4 bg-white">
+                            <p class="text-black text-2xl">{{ $book->nome }}</p>
+                        </div>
+
+                      <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
+                        <div class="px-6 py-4 bg-white">
+                          <div class="mb-1">
+                            <p class="text-black font-bold text-xl">{{ $book->nome }}</p>
+                          </div>
+                          <p class="text-black text-sm">Autor: {{ $book->autor }}</p>
+                          <p class="text-black text-base">
+                            {{ $book->descricao }}
+                          </p>
+                        </div>
+                       </div>
+                      </div>
+                    </div>
+                      @endforeach
+                </div>
+              </div>
+            </div>
 
     </body>
 </html>

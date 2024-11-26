@@ -13,6 +13,7 @@ class Book extends Model
         'autor',
         'descricao',
         'capa',
+        'tipoLivro',
         'livro',
     ];
 
