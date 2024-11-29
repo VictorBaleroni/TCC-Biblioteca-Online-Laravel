@@ -58,5 +58,4 @@ class BookController extends Controller
         $book->save();
         return redirect()->back();
     }
-    
 }

@@ -11,38 +11,42 @@
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                         </svg>
                     </div>
-                    <input type="text" name="searchBook" class="w-full p-4 ps-10 px-[10rem] text-md rounded-lg dark:bg-gray-700 dark:border-gray-700 text-white" placeholder="Pesquisar..."  />
-                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Procurar</button>
+                    <input type="text" name="searchBook" class="w-full p-4 ps-10 px-[10rem] text-md rounded-lg dark:bg-gray-100 
+                    dark:border-gray-700" placeholder="Pesquisar..."  />
+                    <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none 
+                    focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Procurar</button>
                 </div>
             </form>
         </div>
       </div>
     </header>
   </div>
-<div class="mx-[4rem]">
-  <div class="flex items-center justify-center min-h-screen container mx-auto">
-      <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
-          @foreach ($books as $book)
-          <div class="pt-6">
-            <div class="relative bg-gray-300 overflow-hidden rounded-md shadow-lg transition-all duration-300 group">
+
+  <div class="mx-[4rem] py-5">
+    <div class="flex justify-center min-h-screen container mx-auto">
+        <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
+          @foreach ($books as $index => $book)
+          <div>
+            <div class="relative bg-gray-300 overflow-hidden rounded-md transition-all duration-300 group">
                 <a href="{{ route('showBooks.show',['book'=>$book->id]) }}">
                   <img class="w-full h-[30rem]" src="{{ asset( "storage/$book->capa" ) }}" alt="Capas">
                 </a>
-                <div class="flex items-center justify-center py-4 bg-white">
-                  <p class="text-black text-2xl">{{ $book->nome }}</p>
+                <div class="flex items-center justify-center py-4 dark:bg-gray-800">
+                  <p class="text-white text-2xl">{{ $book->nome }}</p>
               </div>
-
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
-              <div class="px-6 py-4 bg-white">
+              <div class="px-6 py-4 dark:bg-gray-800">
+                <livewire:favorite-book.book-favorite :book="$book">
                 <div class="mb-1">
-                  <p class="text-black font-bold text-xl">{{ $book->nome }}</p>
+                  <p class="text-white font-bold text-xl">{{ $book->nome }}</p>
                 </div>
-                <p class="text-black text-sm">Autor: {{ $book->autor }}</p>
-             
-                <p class="text-black text-base">
-                  {{ $book->descricao }}
+                <p class="text-white text-sm">Autor: {{ $book->autor }}</p>
+                <p id="texto-curto-{{ $index }}" class="text-white text-sm">
+                  {{ Str::limit($book->descricao, 30) }}
                 </p>
-
+                <p id="texto-completo-{{ $index }}" class="text-white text-sm" style="display: none;">{{ $book->descricao }}</p>
+                <button class="text-white" id="botao-leia-mais-{{ $index }}" data-index="{{ $index }}">Leia mais</button>
+                
                 <div class="flex justify-between">
                   @can('is_ADM')
                   <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 border border-blue-700 rounded" href="{{ route('editBooks.edit',['book'=>$book->id]) }}">Editar</a>
@@ -53,7 +57,7 @@
                     <div class="pl-4">
                     <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5  border border-red-700 rounded" type="submit">Deletar</button>
                     </div>
-                  </form>  
+                  </form>
                   @endcan
                 </div>
               </div>
@@ -69,4 +73,28 @@
           'searchBook' => request()->get('searchBook', '')
       ])->links('vendor.pagination.tailwind') }}
   </div>
+  @livewireScripts
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const botoes = document.querySelectorAll('[id^="botao-leia-mais-"]');
+
+        botoes.forEach(botao => {
+            botao.addEventListener('click', function() {
+                const index = this.getAttribute('data-index');
+                const textoCurto = document.getElementById(`texto-curto-${index}`);
+                const textoCompleto = document.getElementById(`texto-completo-${index}`);
+                
+                if (textoCompleto.style.display === 'none') {
+                    textoCompleto.style.display = 'block';
+                    textoCurto.style.display = 'none';
+                    this.textContent = 'Leia menos';
+                } else {
+                    textoCompleto.style.display = 'none';
+                    textoCurto.style.display = 'block';
+                    this.textContent = 'Leia mais';
+                }
+            });
+        });
+    });
+</script>
 </x-sidebar-layout>

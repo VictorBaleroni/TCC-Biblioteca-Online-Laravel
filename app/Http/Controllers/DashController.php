@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Book;
 
-
 class DashController extends Controller
 {
     public readonly Book $book;
@@ -14,7 +13,7 @@ class DashController extends Controller
     $this->book = new Book();
     }
 
-    public function index(Request $request){   
+    public function index(Request $request){
         return view('dashboard',['books' => Book::query()->where('nome', 'like', '%' . $request->searchBook . '%')->orwhere('autor', 'like', '%' . $request->searchBook . '%')->paginate(12)]);
     }
 

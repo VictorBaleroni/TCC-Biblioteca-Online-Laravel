@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function(){
 
 Route::middleware('auth')->group(function(){
     Route::get('/favorites',[FavoriteController::class,'index'])->name('favorites');
+    Route::delete('/favorites/{favorite}',[FavoriteController::class,'destroy'])->name('favorites.destroy');
 });
 
 Route::middleware('auth')->group(function () {

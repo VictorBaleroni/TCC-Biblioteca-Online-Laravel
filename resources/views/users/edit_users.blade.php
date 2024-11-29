@@ -11,8 +11,8 @@
                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                             </svg>
                         </div>
-                        <input type="text" name="searchUser" class="w-full p-4 ps-10 px-[10rem] text-md rounded-lg dark:bg-gray-700
-                        dark:border-gray-700 text-white" placeholder="Pesquisar..."  />
+                        <input type="text" name="searchUser" class="w-full p-4 ps-10 px-[10rem] text-md rounded-lg dark:bg-gray-100
+                        dark:border-gray-700" placeholder="Pesquisar..."  />
                         <button type="submit" class="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Procurar</button>
                     </div>
                 </form>

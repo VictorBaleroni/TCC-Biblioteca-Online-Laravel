@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Book extends Model
 {
@@ -16,5 +17,12 @@ class Book extends Model
         'tipoLivro',
         'livro',
     ];
-
+   
+    public function favorites(){
+        return $this->hasMany(Favorite::class)->where(function ($query){
+            if(Auth::check()){
+            $query->where('user_id', Auth::user()->id);
+            }
+        });
+    }
 }
