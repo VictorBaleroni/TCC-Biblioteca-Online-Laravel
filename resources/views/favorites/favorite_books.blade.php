@@ -20,7 +20,7 @@
             </div>
           </div>
         </header>
-      </div>
+    </div>
        
 <div class="mx-[4rem] py-5">
     <div class="flex justify-center min-h-screen mx-auto">
@@ -32,7 +32,6 @@
                         <a href="{{ route('showBooks.show',['book'=>$favorite->book->id]) }}">
                             <img class="w-full h-[30rem]" src="{{ asset( 'storage/'.$favorite->book->capa.'' ) }}" alt="Capas">
                         </a>
-                     
                     <div class="flex items-center justify-center py-4 dark:bg-gray-800">
                         <p class="text-white text-2xl">{{ $favorite->book->nome }}</p>
                     </div>
@@ -40,21 +39,22 @@
                         <div class="px-6 py-4 dark:bg-gray-800">
                             <div class="mb-1">
                                 <p class="text-white font-bold text-xl">{{ $favorite->book->nome }}</p>
-                              </div>
-                              <p class="text-white text-sm">Autor: {{ $favorite->book->autor }}</p>
-                            <p id="texto-curto-{{ $index }}" class="text-white text-sm">
+                            </div>
+                                <p class="text-white text-sm">Autor: {{ $favorite->book->autor }}</p>
+                                <p id="texto-curto-{{ $index }}" class="text-white text-sm">
                                 {{ Str::limit($favorite->book->descricao, 30) }}
                               </p>
                               <p id="texto-completo-{{ $index }}" class="text-white text-sm" style="display: none;">{{ $favorite->book->descricao }}</p>
                               <button class="text-white" id="botao-leia-mais-{{ $index }}" data-index="{{ $index }}">Leia mais</button>
-
-                        <form action="{{ route('favorites.destroy',['favorite'=>$favorite->id]) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <div class="pl-4">
-                            <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5  border border-red-700 rounded" type="submit">Deletar</button>
-                            </div>
-                          </form> 
+                            <div class="flex justify-center">
+                                <form action="{{ route('favorites.destroy',['favorite'=>$favorite->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="flex justify-center items-center mb-1 p-3 rounded-lg  dark:hover:bg-gray-700" type="submit">
+                                        <img class="h-7 w-8" src="{{ asset('img/icon_lixo.ico') }}" alt="delete"></a>
+                                    </button>
+                                </form> 
+                            </div>    
                         </div>
                     </div>
                 </div>

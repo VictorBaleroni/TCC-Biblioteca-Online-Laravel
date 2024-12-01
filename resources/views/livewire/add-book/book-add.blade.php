@@ -1,7 +1,7 @@
 <div class="pt-[4rem] pr-[10rem] pl-[10rem]">
     <div class="max-w-xl mx-auto m-4 p-10 bg-white rounded shadow-xl">
         <div class="flex justify-center">
-            <p class="text-[2rem] pb-4">Cadastro de livros</p>
+            <p class="text-[2rem] pb-4">Cadastro de Livros</p>
         </div>
         <form wire:submit.prevent="saveBook">
             <div class="text-red-700">@error('bookName') {{ $message }} @enderror</div>
@@ -12,6 +12,32 @@
 
             <div class="text-red-700">@error('bookdescricao') {{ $message }} @enderror</div>
             <input type='text' wire:model="bookdescricao" placeholder='Descrição' class="px-4 py-2 mb-4 text-lg rounded-md bg-white border border-gray-400 w-full outline-blue-500"/>
+            
+            @if (session()->has('genError'))
+            <div class="text-red-700 flex justify-center">
+                {{ session('genError') }}
+            </div>
+            @endif
+            <select wire:model="genBook" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-400 
+            px-4 mb-4 rounded-md shadow leading-tight focus:outline-none focus:shadow-outline ">
+                <option value="inactive" disabled>Gênero</option>
+                <option value="Ficcao">Ficção</option>
+                <option value="Romance" >Romance </option>
+                <option value="Fantasia">Fantasia</option>
+                <option value="Terror" >Terror </option>
+                <option value="Drama">Drama</option>
+                <option value="Biografia" >Biografia </option>
+                <option value="Historia">História</option>
+                <option value="Autoajuda" >Autoajuda </option>
+                <option value="Ciencia">Ciência</option>
+                <option value="Poesia" >Poesia </option>
+                <option value="Infantil">Infantil</option>
+                <option value="Cronicas" >Crônicas </option>
+                <option value="Religiao">Religião</option>
+                <option value="Aventura" >Aventura </option>
+                <option value="Mitologia">Mitologia</option>
+                <option value="Filosofia" >Filosofia </option>
+            </select>
             
 
             <label for="file-input">Capa do Livro</label>

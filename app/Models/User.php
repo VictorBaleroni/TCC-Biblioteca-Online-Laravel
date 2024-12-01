@@ -45,4 +45,12 @@ class User extends Authenticatable
     public function favorites(){
         return $this->hasMany(Favorite::class);
     }
+
+    public function likes(){
+        return $this->belongsToMany(Book::class,'likes')->withTimestamps();
+    }
+
+    public function likesBooks(Book $book){
+        return $this->likes()->where('book_id', $book->id)->exists();
+    }
 }

@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('capa');
             $table->string('tipoLivro');
             $table->string('livro');
+            $table->string('genero');
+            $table->unsignedInteger('like')->default(0);
             $table->timestamps();
         });
     }

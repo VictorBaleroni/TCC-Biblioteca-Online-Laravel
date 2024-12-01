@@ -16,6 +16,7 @@ class BookAdd extends Component
     public $bookCapa;
     public $typeArq = 'isPdf';
     public $bookFile;
+    public $genBook = 'inactive';
     
     public function saveBook(){
         $this->validate([ 
@@ -47,13 +48,18 @@ class BookAdd extends Component
             return session()->flash('typeArqError', 'Tipo de arquivo invalido!');
         }
 
+        if($this->genBook == 'inactive'){
+            return session()->flash('genError', 'Gênero não informado!');
+        }
+           
            Book::create([
             'nome' => $this->bookName,
             'autor' => $this->bookAutor,
             'descricao' => $this->bookdescricao,
             'capa' => $saveCapa,
             'tipoLivro' => $this->typeArq,
-            'livro' =>$saveFile
+            'livro' => $saveFile,
+            'genero' => $this->genBook
            ]);
 
         $this->reset('bookName','bookAutor','bookdescricao','bookCapa','typeArq','bookFile');

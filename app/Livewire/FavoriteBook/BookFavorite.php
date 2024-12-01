@@ -10,8 +10,8 @@ class BookFavorite extends Component
 {
     public $book;
 
-    public function favoritar($idBook) {
-        $book = Book::find($idBook);
+    public function favoritar(Book $book) {
+        //$book = Book::find($idBook);
 
         $book->favorites()->create([
             'user_id' => Auth::user()->id

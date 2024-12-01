@@ -16,6 +16,7 @@ class Book extends Model
         'capa',
         'tipoLivro',
         'livro',
+        'genero',
     ];
    
     public function favorites(){
@@ -24,5 +25,9 @@ class Book extends Model
             $query->where('user_id', Auth::user()->id);
             }
         });
+    }
+
+    public function likes(){
+        return $this->belongsToMany(User::class,'likes')->withTimestamps();
     }
 }

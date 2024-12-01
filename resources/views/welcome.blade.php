@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        
-        <title>Biblioteca Online</title>
-        <!-- Fonts -->
-        <link rel="preconnect" href="https://fonts.bunny.net">
-        <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Biblioteca Online</title>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.bunny.net">
+  <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
+  <!-- Scripts -->
+  @vite(['resources/css/app.css', 'resources/js/app.js'])
 
-    </head>
-    <body class="font-sans dark:bg-zinc-300">
+</head>
+<body class="font-sans dark:bg-zinc-300">
       <div class="flex justify-start items-start bg-slate-800">
         <header>     
             @if (Route::has('login'))
@@ -65,27 +65,29 @@
         </div>
           
         <div class="mx-[4rem]">
-            <div class="flex items-center justify-center min-h-screen container mx-auto">
+            <div class="flex  justify-center min-h-screen container mx-auto">
                 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
-                    @foreach ($books as $book)
+                    @foreach ($books as $index => $book)
                     <div class="pt-6">
                       <div class="relative bg-gray-300 overflow-hidden rounded-md shadow-lg transition-all duration-300 group">
                           <a href="{{ route('showBooks.show',['book'=>$book->id]) }}">
                             <img class="w-full h-[30rem]" src="{{ asset( "storage/$book->capa" ) }}" alt="Capas">
                           </a>
-                          <div class="flex items-center justify-center py-4 bg-white">
-                            <p class="text-black text-2xl">{{ $book->nome }}</p>
+                          <div class="flex items-center justify-center py-4 dark:bg-gray-800">
+                            <p class="text-white text-2xl">{{ $book->nome }}</p>
                         </div>
 
                       <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
-                        <div class="px-6 py-4 bg-white">
+                        <div class="px-6 py-4 dark:bg-gray-800">
                           <div class="mb-1">
-                            <p class="text-black font-bold text-xl">{{ $book->nome }}</p>
+                            <p class="text-white font-bold text-xl">{{ $book->nome }}</p>
                           </div>
-                          <p class="text-black text-sm">Autor: {{ $book->autor }}</p>
-                          <p class="text-black text-base">
-                            {{ $book->descricao }}
+                          <p class="text-white text-sm">Autor: {{ $book->autor }}</p>
+                          <p id="texto-curto-{{ $index }}" class="text-white text-sm">
+                            {{ Str::limit($book->descricao, 30) }}
                           </p>
+                          <p id="texto-completo-{{ $index }}" class="text-white text-sm" style="display: none;">{{ $book->descricao }}</p>
+                          <button class="text-white" id="botao-leia-mais-{{ $index }}" data-index="{{ $index }}">Leia mais</button>
                         </div>
                        </div>
                       </div>
@@ -94,6 +96,28 @@
                 </div>
               </div>
             </div>
-
-    </body>
+            <script>
+              document.addEventListener('DOMContentLoaded', function() {
+                  const botoes = document.querySelectorAll('[id^="botao-leia-mais-"]');
+          
+                  botoes.forEach(botao => {
+                      botao.addEventListener('click', function() {
+                          const index = this.getAttribute('data-index');
+                          const textoCurto = document.getElementById(`texto-curto-${index}`);
+                          const textoCompleto = document.getElementById(`texto-completo-${index}`);
+                          
+                          if (textoCompleto.style.display === 'none') {
+                              textoCompleto.style.display = 'block';
+                              textoCurto.style.display = 'none';
+                              this.textContent = 'Leia menos';
+                          } else {
+                              textoCompleto.style.display = 'none';
+                              textoCurto.style.display = 'block';
+                              this.textContent = 'Leia mais';
+                          }
+                      });
+                  });
+              });
+          </script>
+</body>
 </html>

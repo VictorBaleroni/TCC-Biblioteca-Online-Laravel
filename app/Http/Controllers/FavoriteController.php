@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 class FavoriteController extends Controller
 {
     function index(Request $request){
-        $searchTerm = $request->input('searchFavorite', '');
+        $searchfav = $request->input('searchFavorite', '');
 
-        $favorites = Favorite::with('book')->whereHas('book', function ($query) use ($searchTerm) {
-            $query->where('nome', 'like', '%' . $searchTerm . '%');
+        $favorites = Favorite::with('book')->whereHas('book', function ($query) use ($searchfav) {
+            $query->where('nome', 'like', '%' . $searchfav . '%');
         })->latest()->get();
 
         return view('favorites.favorite_books',['favorites' => $favorites]);

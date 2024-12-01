@@ -36,7 +36,10 @@
               </div>
             <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
               <div class="px-6 py-4 dark:bg-gray-800">
-                <livewire:favorite-book.book-favorite :book="$book">
+                <div class="flex justify-center">
+                  <livewire:favorite-book.book-favorite :book="$book">
+                  <livewire:like-book.book-like :book="$book">
+                </div>
                 <div class="mb-1">
                   <p class="text-white font-bold text-xl">{{ $book->nome }}</p>
                 </div>
@@ -49,14 +52,16 @@
                 
                 <div class="flex justify-between">
                   @can('is_ADM')
-                  <a class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-5 border border-blue-700 rounded" href="{{ route('editBooks.edit',['book'=>$book->id]) }}">Editar</a>
-
+                  
+                  <a href="{{ route('editBooks.edit',['book'=>$book->id]) }}" class="flex justify-center items-center p-3 rounded-lg  dark:hover:bg-gray-700">
+                    <img class="h-7 w-8" src="{{ asset('img/icon_edit_book.ico') }}" alt="delete"></a>
+                  </a>
                   <form action="{{ route('dashboard.destroy',['book'=>$book->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                    <div class="pl-4">
-                    <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5  border border-red-700 rounded" type="submit">Deletar</button>
-                    </div>
+                    <button class="flex justify-center items-center p-3 rounded-lg  dark:hover:bg-gray-700" type="submit">
+                      <img class="h-7 w-8" src="{{ asset('img/icon_lixo.ico') }}" alt="delete"></a>
+                    </button>
                   </form>
                   @endcan
                 </div>
@@ -64,7 +69,7 @@
              </div>
             </div>
           </div>
-            @endforeach
+          @endforeach
       </div>
     </div>
   </div>
@@ -96,5 +101,5 @@
             });
         });
     });
-</script>
+  </script>
 </x-sidebar-layout>

@@ -24,18 +24,18 @@
     <div class="pl-[5rem]">
     @foreach ($users as $user)
     <div class="pt-5 pr-5 pl-15">
-        <div class="sm:p-3 dark:bg-gray-800 shadow sm:rounded-md">
+        <div class="sm:p-2 dark:bg-gray-800 rounded-md">
             <div class="flex justify-between">
                 <div class="flex">
                 <p class="pt-2 pr-1 font-medium text-white">Usuário:</p>   
                 <p class="pt-2 pr-6 font-medium text-white">{{ $user->name }}</p>
                 <p class="pt-2 pr-1 font-medium text-white">Email:</p>   
                 <p class="pt-2 pr-1 font-medium text-white">{{ $user->email }}</p> 
-                </div>
+            </div>
             <div class="flex">
                 <form  action="{{ route('users.update',['user'=>$user->id]) }}" method="POST">
-                @csrf
-                @method('PUT')
+                    @csrf
+                    @method('PUT')
                     <div class="inline-block relative w-64">
                     <select class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 
                     px-4 py-[0.65rem] rounded shadow leading-tight focus:outline-none focus:shadow-outline" name="typeUser" onchange="this.form.submit()">
@@ -46,10 +46,12 @@
                     </div>
                 </form>
                 <form action="{{ route('users.destroy',['user'=>$user->id]) }}" method="POST">
-                @csrf
-                @method('DELETE')
+                    @csrf
+                    @method('DELETE')
                     <div class="pl-4">
-                        <button class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-5 border border-red-700 rounded" type="submit">Deletar</button>
+                        <button class=" items-center p-2 rounded-lg  dark:hover:bg-gray-700" type="submit">
+                            <img class="h-7 w-8" src="{{ asset('img/icon_lixo.ico') }}" alt="delete"></a>
+                        </button>
                     </div>
                 </form>
             </div>
