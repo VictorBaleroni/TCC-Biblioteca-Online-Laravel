@@ -16,22 +16,25 @@ class DashController extends Controller
 
         $livrosRecomendados = Book::whereIn('genero', $categoriasFavoritas)
         ->whereDoesntHave('favorites', function ($query) {
-            $query->where('user_id', Auth::user()->id); // Excluir livros que o usuário já favoritou
+            $query->where('user_id', Auth::user()->id); 
         })
-        ->withCount('likes') // Contar o número de likes de cada livro
-        ->orderByDesc('likes_count'); // Ordenar pelos mais curtidos
+        ->withCount('likes') 
+        ->orderByDesc('likes_count')->get(); 
 
+        if($livrosRecomendados->count() == 0){
+            $livrosRecomendados = Book::latest()->get();
+        }
 
-        $livrosRestantes = Book::whereNotIn('genero', $categoriasFavoritas)
-        ->withCount('likes')
-        ->orderByDesc('likes_count'); // Ordenar pelos mais curtidos
+        // $livrosRestantes = Book::whereNotIn('genero', $categoriasFavoritas)
+        //  ->withCount('likes')
+        //  ->orderByDesc('likes_count');
 
       
-        $livrosOrdenados = $livrosRecomendados->union($livrosRestantes)->get();
+        // $livrosOrdenados = $livrosRecomendados->union($livrosRestantes)->get();
 
             return view('dashboard',['books' => Book::query()->where('nome', 'like', '%' . $request->searchBook . '%')
             ->orwhere('autor', 'like', '%' . $request->searchBook . '%')
-            ->orwhere('genero', 'like', '%' . $request->searchBook . '%')->paginate(12), 'similarBooks' => $livrosOrdenados]);
+            ->orwhere('genero', 'like', '%' . $request->searchBook . '%')->paginate(12), 'similarBooks' => $livrosRecomendados]);
     }
 
     public function show(Book $book){

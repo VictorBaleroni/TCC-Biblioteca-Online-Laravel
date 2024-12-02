@@ -1,6 +1,6 @@
 <section class="space-y-6">
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="flex justify-center text-lg font-medium text-gray-900">
             {{ __('Deletar Conta') }}
         </h2>
 
@@ -35,8 +35,7 @@
                     name="password"
                     type="password"
                     class="mt-1 block w-3/4"
-                    placeholder="{{ __('Senha') }}"
-                />
+                    placeholder="{{ __('Senha') }}"/>
 
                 <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
             </div>

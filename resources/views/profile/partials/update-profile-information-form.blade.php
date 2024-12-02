@@ -1,10 +1,10 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="flex justify-center text-lg font-medium text-gray-900">
             {{ __('Informações do Perfil') }}
         </h2>
 
-        <p class="mt-1 text-sm text-gray-600">
+        <p class="flex justify-center mt-1 text-sm text-gray-600">
             {{ __("Atualize as informações do perfil e o endereço de e-mail da sua conta.") }}
         </p>
     </header>
@@ -47,7 +47,7 @@
             @endif
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center gap-4">
             <x-primary-button>{{ __('Salvar') }}</x-primary-button>
 
             @if (session('status') === 'profile-updated')

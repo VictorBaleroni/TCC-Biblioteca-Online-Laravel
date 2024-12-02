@@ -1,6 +1,6 @@
 <section>
     <header>
-        <h2 class="text-lg font-medium text-gray-900">
+        <h2 class="flex justify-center text-lg font-medium text-gray-900">
             {{ __('Atualizar senha') }}
         </h2>
 
@@ -31,7 +31,7 @@
             <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center gap-4">
+        <div class="flex items-center justify-center gap-4">
             <x-primary-button>{{ __('Salvar') }}</x-primary-button>
 
             @if (session('status') === 'password-updated')

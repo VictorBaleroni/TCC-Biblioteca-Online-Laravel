@@ -46,13 +46,6 @@
       </div>
     </header>
   </div>
-  @if (!$books->count())
-  <div class="flex justify-center py-5">
-    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-      <p>Nenhum livro encontrado!</p>
-    </div>
-  </div>
-  @endif
   <div class="mx-[4rem] py-5">
     <div class="container mx-auto">
       <h1 class="text-2xl font-bold mb-6">Livros em Destaque</h1>
@@ -71,20 +64,23 @@
                   @endforeach
               </div>
           </div>
-          <button 
-              @click="currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1"
+          <button @click="currentIndex = (currentIndex > 0) ? currentIndex - 1 : totalItems - 1"
               class="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 px-2 py-2 rounded-full shadow-lg hover:bg-gray-700 focus:outline-none">
-              
-              <img class="h-8 w-8" src="{{ asset('img/icon_back.ico') }}" alt="back">
+              <img class="h-7 w-7" src="{{ asset('img/icon_seta-esquerda.ico') }}" alt="back">
           </button>
-          <button 
-              @click="currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0"
+          <button @click="currentIndex = (currentIndex < totalItems - 1) ? currentIndex + 1 : 0"
               class="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 px-2 py-2 rounded-full shadow-lg hover:bg-gray-700 focus:outline-none">
-              <img class="h-8 w-8" src="{{ asset('img/icon_next.ico') }}" alt="next">
+              <img class="h-7 w-7" src="{{ asset('img/icon_seta-direita.ico') }}" alt="next">
           </button>
       </div>
   </div>
-
+  @if (!$books->count())
+  <div class="flex justify-center py-5">
+    <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+      <p>Nenhum livro encontrado!</p>
+    </div>
+  </div>
+  @endif
     <div class="flex justify-center py-4 min-h-screen container mx-auto">
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
           @foreach ($books as $index => $book)
