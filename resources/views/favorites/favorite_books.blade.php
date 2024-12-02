@@ -21,14 +21,14 @@
           </div>
         </header>
     </div>
-       
+
 <div class="mx-[4rem] py-5">
     <div class="flex justify-center min-h-screen mx-auto">
         <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 
         @foreach ($favorites as $index => $favorite)
         @if ($favorite->user->id == Auth::user()->id)
-        <div>
-        <div class="relative bg-gray-300 overflow-hidden rounded-md transition-all duration-300 group">
+            <div>
+                <div class="relative bg-gray-300 overflow-hidden rounded-md transition-all duration-300 group">
                         <a href="{{ route('showBooks.show',['book'=>$favorite->book->id]) }}">
                             <img class="w-full h-[30rem]" src="{{ asset( 'storage/'.$favorite->book->capa.'' ) }}" alt="Capas">
                         </a>

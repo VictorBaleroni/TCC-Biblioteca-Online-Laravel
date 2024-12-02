@@ -63,7 +63,13 @@
           </div>
           </div>
         </div>
-          
+        @if (!$books->count())
+        <div class="flex justify-center py-5">
+          <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+            <p>Nenhum livro encontrado!</p>
+          </div>
+        </div>
+        @endif 
         <div class="mx-[4rem]">
             <div class="flex  justify-center min-h-screen container mx-auto">
                 <div class="grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4"> 

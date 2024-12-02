@@ -8,13 +8,8 @@ use App\Models\Book;
 
 class DashController extends Controller
 {
-    public readonly Book $book;
-    public function __construct(){
-    $this->book = new Book();
-    }
-
     public function index(Request $request){
-        return view('dashboard',['books' => Book::query()->where('nome', 'like', '%' . $request->searchBook . '%')->orwhere('autor', 'like', '%' . $request->searchBook . '%')->paginate(12)]);
+            return view('dashboard',['books' => Book::query()->where('nome', 'like', '%' . $request->searchBook . '%')->orwhere('autor', 'like', '%' . $request->searchBook . '%')->paginate(12)]);
     }
 
     public function show(Book $book){
@@ -45,7 +40,7 @@ class DashController extends Controller
     }
 
     public function destroy(string $id){
-        $this->book->where('id', $id)->delete();
+        Book::where('id', $id)->delete();
             return redirect()->back();
     }
 }
