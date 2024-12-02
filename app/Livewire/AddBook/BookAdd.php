@@ -62,7 +62,7 @@ class BookAdd extends Component
             'genero' => $this->genBook
            ]);
 
-        $this->reset('bookName','bookAutor','bookdescricao','bookCapa','typeArq','bookFile');
+        $this->reset('bookName','bookAutor','bookdescricao','bookCapa','typeArq','bookFile','genBook');
     }
 
     public function render()

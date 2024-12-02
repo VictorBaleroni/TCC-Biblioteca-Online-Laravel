@@ -1,7 +1,7 @@
 <x-sidebar-layout>
     <div class="pt-[4rem]">
         <header class="bg-white shadow">
-          <div class="mx-5 py-4">
+          <div class="mx-5 py-2">
             <div class="flex items-center justify-center w-full">
                 <form action="{{route('favorites')}}" method="GET" class="max-w-lg">
                 @csrf   
@@ -17,6 +17,31 @@
                         focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Procurar</button>
                     </div>
                 </form>
+            </div>
+            <div class="flex justify-center py-2">
+                <form action="{{route('favorites')}}" method="GET" >
+                  @csrf
+                  <select name="searchFavorite" onchange="this.form.submit()" class="block appearance-none w-full bg-white border border-gray-400 hover:border-gray-500 
+                  px-8 rounded shadow leading-tight focus:outline-none focus:shadow-outline">
+                      <option selected disabled>Filtrar por gênero</option>         
+                      <option value="Ficcao">Ficção</option>
+                      <option value="Romance" >Romance </option>
+                      <option value="Fantasia">Fantasia</option>
+                      <option value="Terror" >Terror </option>
+                      <option value="Drama">Drama</option>
+                      <option value="Biografia" >Biografia </option>
+                      <option value="Historia">História</option>
+                      <option value="Autoajuda" >Autoajuda </option>
+                      <option value="Ciencia">Ciência</option>
+                      <option value="Poesia" >Poesia </option>
+                      <option value="Infantil">Infantil</option>
+                      <option value="Cronicas" >Crônicas </option>
+                      <option value="Religiao">Religião</option>
+                      <option value="Aventura" >Aventura </option>
+                      <option value="Mitologia">Mitologia</option>
+                      <option value="Filosofia" >Filosofia </option>
+                  </select>
+              </form>
             </div>
           </div>
         </header>
@@ -38,9 +63,9 @@
                     <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
                         <div class="px-6 py-4 dark:bg-gray-800">
                             <div class="mb-1">
-                                <p class="text-white font-bold text-xl">{{ $favorite->book->nome }}</p>
+                                <p class="text-white font-bold text-md">Autor: {{ $favorite->book->autor }}</p>
                             </div>
-                                <p class="text-white text-sm">Autor: {{ $favorite->book->autor }}</p>
+                                <p class="text-white text-sm">{{ $favorite->book->genero }}</p>
                                 <p id="texto-curto-{{ $index }}" class="text-white text-sm">
                                 {{ Str::limit($favorite->book->descricao, 30) }}
                               </p>

@@ -1,7 +1,7 @@
 <x-sidebar-layout>
     <div class="pt-[4rem]">
         <header class="bg-white shadow">
-          <div class="mx-5 py-4">
+          <div class="mx-5 py-2">
             <div class="flex items-center justify-center w-full">
                 <form action="{{route('users.index')}}" method="GET" class="max-w-lg">
                 @csrf   

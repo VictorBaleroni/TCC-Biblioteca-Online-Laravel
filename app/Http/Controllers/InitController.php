@@ -8,8 +8,9 @@ use App\Models\Book;
 
 class InitController extends Controller
 {
-    function index(){
-        $books = new Book();
-        return view('welcome',['books' => $books->all()]);
+    function index(Request $request){
+        
+        return view('welcome',['books' => Book::query()->where('nome', 'like', '%' . $request->searchBook . '%')
+        ->orwhere('autor', 'like', '%' . $request->searchBook . '%')->paginate(12)]);
     }
 }
