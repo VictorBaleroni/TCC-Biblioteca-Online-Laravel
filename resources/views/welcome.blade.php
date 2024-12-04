@@ -105,7 +105,7 @@
                       <div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300 absolute bottom-0 left-0 right-0 text-center font-semibold ">
                         <div class="px-6 py-4 dark:bg-gray-800">
                           <div class="mb-1">
-                            <p class="text-white font-bold text-xl">{{ $book->nome }}</p>
+                            <p class="text-white font-bold text-md">{{ $book->genero }}</p>
                           </div>
                           <p class="text-white text-sm">Autor: {{ $book->autor }}</p>
                           <p id="texto-curto-{{ $index }}" class="text-white text-sm">
@@ -121,6 +121,11 @@
                 </div>
               </div>
             </div>
+            <div class="flex py-10 justify-center">
+              {{ $books->appends([
+                  'searchBook' => request()->get('searchBook', '')
+              ])->links('vendor.pagination.tailwind') }}
+          </div>
             <script>
               document.addEventListener('DOMContentLoaded', function() {
                   const botoes = document.querySelectorAll('[id^="botao-leia-mais-"]');

@@ -15,7 +15,7 @@
 <body class="dark:bg-zinc-800">
       <div class="py-5">
         <main class="flex justify-center items-center w-full min-h-[93vh]">
-          <div class="max-w-xl mx-auto shadow-xl">
+          <div class="max-w-xl mx-auto bg-white shadow-xl">
             <div id="showEpub"></div>
           </div>
         </main>

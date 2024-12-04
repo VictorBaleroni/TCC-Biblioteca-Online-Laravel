@@ -46,7 +46,7 @@
       </div>
     </header>
   </div>
-  <div class="mx-[4rem] py-5">
+  <div class="mx-[4rem] px-[5%] py-5">
     <div class="container mx-auto">
       <h1 class="text-2xl font-bold mb-6">Livros em Destaque</h1>
       <div x-data="{ currentIndex: 0, totalItems: {{ $similarBooks->count() }} }" class="relative">
@@ -134,7 +134,7 @@
       {{ $books->appends([
           'searchBook' => request()->get('searchBook', '')
       ])->links('vendor.pagination.tailwind') }}
-  </div>
+    </div>
   @livewireScripts
   <script>
     document.addEventListener('DOMContentLoaded', function() {
