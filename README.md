@@ -19,3 +19,4 @@
 * postgres (PostgreSQL) 16.2
 
 # Como Inicializar o Projeto
+* Criar banco de nome "tcc_biblioteca_online"
