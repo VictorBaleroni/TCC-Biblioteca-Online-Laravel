@@ -20,15 +20,15 @@
 
 # Como Inicializar o Projeto
 * Criar banco de nome "tcc_biblioteca_online"
-* Abrir o projeto e no terminal digitar composer update
+* Abrir o projeto e no terminal digitar ``` composer update ```
 * Renomeie o arquivo .env.example para .env
 *  No .env faça alterações como a senha do banco caso necessário
 *  No terminal coloque os comandos:
-*  php artisan migrate
-*  php artisan key:generate
-*  php artisan storage:link
-*  php artisan db:seed
+* ``` php artisan migrate ```
+* ``` php artisan key:generate ```
+* ``` php artisan storage:link ```
+* ``` php artisan db:seed ```
 *  E por último
-*  php artisan serve
+* ``` php artisan serve ```
 
 ### O login para o admin é "admin@admin.com" e senha "12345678"
